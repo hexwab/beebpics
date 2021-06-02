@@ -1,0 +1,23 @@
+--- exomizer-3.1.0/sfxdecr.s.orig	2020-12-23 12:46:10.000000000 +0000
++++ exomizer-3.1.0/sfxdecr.s		2021-06-02 15:54:11.359309213 +0100
+@@ -255,7 +255,7 @@
+   zp_bits_hi = $74
+   zp_ro_state = $75
+ 
+-  c_basic_start    = $1900
++  c_basic_start    = $1100
+   c_end_of_mem_rom = $7c00
+   c_effect_char    = $7fe7
+   c_effect_color   = $7fe6
+@@ -1138,10 +1138,10 @@
+ ; -- start of stage 1 -----------------------------------------------
+ ; -------------------------------------------------------------------
+ max_transfer_len = .INCLEN("crunched_data") - 5
+-        ldy #transfer_len % 256
+         .IF(.DEFINED(enter_hook))
+           .INCLUDE("enter_hook")
+         .ENDIF
++        ldy #transfer_len % 256
+         tsx
+ cploop:
+         lda stage2end - 4,x
